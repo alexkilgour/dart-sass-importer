@@ -3,15 +3,13 @@ const sass = require('sass');
 // Legacy render
 sass.renderSync({
 	file: './dart-sass/index.scss',
-	importer: [
-		function (url) {
-			console.log('dart-sass render: ', url);
-			return {
-				file: "/some/random/path/file.scss",
-				contents: "div {color: yellow;}"
-			};
-		}
-	]
+	importer: function (url) {
+		console.log('dart-sass render: ', url);
+		return {
+			file: "/some/random/path/file.scss",
+			contents: "div {color: yellow;}"
+		};
+	}
 });
 
 // Compile
