@@ -1,9 +1,10 @@
 {
   "name": "dart-sass-importer",
   "scripts": {
-    "build": "node main.js"
+    "build": "node node-sass/index.js && node dart-sass/index.js"
   },
   "dependencies": {
+    "node-sass": "^7.0.1",
     "sass": "1.47.0"
   }
 }
