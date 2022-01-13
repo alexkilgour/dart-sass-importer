@@ -1,5 +1,5 @@
 # dart-sass-importer
-Test out custom importers for dart sass
+Test out custom importers for dart sass. Only imports that are not found pass through the importer.
 
 `npm run build`
 
