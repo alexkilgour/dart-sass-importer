@@ -3,6 +3,9 @@
   "scripts": {
     "build": "node node-sass/index.js && node dart-sass/index.js"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "node-sass": "^7.0.1",
     "sass": "1.47.0"
