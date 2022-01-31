@@ -1,38 +1,46 @@
 # dart-sass-importer
-Test out custom importers for dart sass. Only imports that are not found pass through the importer.
 
-`npm run build`
+Compare `node-sass` with `dart-sass` to reveal differences with how custom importers are implemented.
 
-## node-sass
-
-**Expected output**
+## SASS file structure to test
 
 ```
-node-sass render:  ../exists
-node-sass render:  missing
-```
+📁 node-sass
+    📄 index.scss
+    📄 exists.scss
+📁 dart-sass
+    📄 index.scss
+    📄 exists.scss
+📁 nested
+    📄 nested.scss
+```  
 
-**Actual output**
-
-```
-node-sass render:  ../exists
-node-sass render:  missing
-```
-
-## dart-sass
-
-**Expected ouput**
+### Import order
 
 ```
-dart-sass render:  ../exists
-dart-sass render:  missing
-dart-sass compile:  ../exists
-dart-sass compile:  missing
+index.scss
+  └── exists.scss
+      └── ../nested/nested.scss
+  └── missing.scss
 ```
 
-**Actual output**
+## The test
 
-```
-dart-sass render:  missing
-dart-sass compile:  missing
-```
+### Methods under test
+
+1. Node SASS `renderSync` when passing utf-8 formatted data
+1. Node SASS `renderSync` when passing a file path
+1. Dart SASS `renderSync` (legacy support) when passing utf-8 formatted data
+1. Dart SASS `renderSync` (legacy support) when passing a file path
+1. Dart SASS `compileString` when passing utf-8 formatted data
+1. Dart SASS `compile` when passing a file path
+
+### Observed differences
+
+The numbers here correspond to the [methods under test](#methods-under-test) section above, and the table shows if each of the files pass through the sass custom reporter:
+
+|                      | 1 | 2 | 3 | 4 | 5 | 6 |
+|----------------------|---|---|---|---|---|---|
+| exists.scss          | ✔️ | ✔️ | ✔️ | ❌ | ✔️ | ❌ |
+| nested/nested.scss   | ✔️ | ✔️ | ❌ | ❌ | ❌ | ❌ |
+| missing.scss         | ✔️ | ✔️ | ✔️ | ✔️ | ✔️ | ✔️ |

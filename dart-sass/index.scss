@@ -1,2 +1,6 @@
-@use '../exists';
+@use 'exists';
 @use 'missing';
+
+div {
+	content: 'index';
+}

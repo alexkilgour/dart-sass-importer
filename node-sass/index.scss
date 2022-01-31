@@ -1,2 +1,6 @@
-@import '../exists';
+@import 'exists';
 @import 'missing';
+
+div {
+	content: 'index';
+}

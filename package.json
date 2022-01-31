@@ -1,12 +1,13 @@
 {
   "name": "dart-sass-importer",
   "scripts": {
-    "build": "node node-sass/index.js && node dart-sass/index.js"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha"
   },
   "engines": {
     "node": ">=14"
   },
   "dependencies": {
+    "mocha": "^6.1.4",
     "node-sass": "^7.0.1",
     "sass": "1.47.0"
   }
