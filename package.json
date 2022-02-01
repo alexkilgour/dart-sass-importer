@@ -6,8 +6,10 @@
   "engines": {
     "node": ">=14"
   },
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
   "dependencies": {
-    "mocha": "^6.1.4",
     "node-sass": "^7.0.1",
     "sass": "1.47.0"
   }
