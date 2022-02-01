@@ -4,8 +4,8 @@
 
 const path = require('path');
 const assert = require('assert');
-const nodeSass = require('../lib/node-sass');
-const dartSass = require('../lib/dart-sass');
+const nodeSass = require('../lib/node');
+const dartSass = require('../lib/dart');
 
 describe('Node SASS: all imports should pass through the custom importer', async function () {
 	it('sass.renderSync with data', async function () {
